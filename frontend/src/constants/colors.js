@@ -1,0 +1,18 @@
+export const Color = {
+  'primary': '#5D92F4',
+  'secondary': '#677080',
+  'success': '#00D014',
+  'danger': '#FF3739',
+  'warning': '#FFB70F',
+  'info': '#00D0BD',
+  'dark': '#464D69',
+  'default': '#FAFAFA',
+  'greyLighten': '#A5A7B2',
+  'grey': '#677080',
+  'white': '#FFFFFF',
+  'black': '#000000',
+  'purple': '#896BD6',
+  'yellow': '#D46B08',
+  'green': '#518032',
+  'lightGreen': '#71B048',
+}
