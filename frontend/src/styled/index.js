@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const FlexContainer = styled.div`
   display: flex;
   justify-content: ${props => props.justifyContent?props.justifyContent: 'center'};
+  align-items: ${props => props.justifyContent?props.justifyContent: 'center'};
   width: ${props => props.width?props.width: '100%'};
   height: ${props => props.height?props.height: '100%'};
   margin: ${props => props.margin};

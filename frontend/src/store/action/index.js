@@ -8,3 +8,7 @@ export const setColorAction = (item) => ({
   item
 })
 
+export const signinAcition = (item) => ({
+  type: 'SIGNIN',
+  item
+})

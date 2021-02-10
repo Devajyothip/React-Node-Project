@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux';
 
-const initialState = {
-  wall_main: '#36c991',
-  wall_bar: '#741616',
-  curtain_primary: '#965454',
-  curtain_secondary: '#6cb7a4',
-  curtain_bar: '#000000',
-  sofa_primary: '#08490a',
+const initColorState = {
+  wall_main: '#ffffff',
+  wall_bar: '#ffffff',
+  curtain_primary: '#ffffff',
+  curtain_secondary: '#ffffff',
+  curtain_bar: '#ffffff',
+  sofa_primary: '#ffffff',
   sofa_secondary: '#ffffff',
-  floor: '#3241b3',
+  floor: '#ffffff',
 };
 
-const colorsGroup = (state = initialState, action) => {
+const colorsGroup = (state = initColorState, action) => {
   switch (action.type) {
     case 'CHANGED_COLOR':
       return {
@@ -23,7 +23,7 @@ const colorsGroup = (state = initialState, action) => {
   }
 }
 
-const setColor = (state = initialState, action) => {
+const setColor = (state = initColorState, action) => {
   switch (action.type) {
     case 'SET_COLOR':
       return {
@@ -35,7 +35,21 @@ const setColor = (state = initialState, action) => {
   }
 }
 
+const initUserState = {
+  email: '',
+}
+
+const signedEmail = (state = initUserState, action) => {
+  switch (action.type) {
+    case 'SIGNIN':
+      return { email: action.item }
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
   colorsGroup,
   setColor,
+  signedEmail,
 });

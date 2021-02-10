@@ -1,17 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Room from './container';
+import {
+  Signin,
+  Signup
+} from './pages/auth';
+import Room from './pages/room';
 import reportWebVitals from './reportWebVitals';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import { Provider } from 'react-redux';
 import { store } from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <Room />
-    </React.StrictMode>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Room} />
+        <Route exact path="/signin" component={Signin} />
+        <Route exact path="/signup" component={Signup} />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

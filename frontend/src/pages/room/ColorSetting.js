@@ -1,25 +1,29 @@
 import React, { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import {
-  // setColorAction,
-  changedColorAction
-} from '../store/action';
-import ColorPicker from '../components/colorpicker';
+  changedColorAction,
+  signinAcition,
+} from '../../store/action';
 import {
   FlexContainer,
   StyledDiv,
-} from '../styled';
-import { baseUrl } from '../constants';
+} from '../../styled';
+import ColorPicker from '../../components/colorpicker';
+import { baseUrl } from '../../constants';
 
 const ColorSetting = () => {
 
   const dispatch = useDispatch();
   const colors = useSelector(state=>state.colorsGroup);
+  const signedEmail = useSelector(state=>state.signedEmail.email);
+  const history = useHistory();
+  const user = localStorage.getItem('user');
 
   const fetchData = async () => {
-    await axios.get(baseUrl+'/1')
+    await axios.post(baseUrl+'/color', {user_id: user})
     .then(res => {
       let data = res.data;
       delete data._id
@@ -27,7 +31,6 @@ const ColorSetting = () => {
       Object.keys(data).map(key => {
         dispatch(changedColorAction({ type: key, color: data[key] }));
       })
-      // dispatch(setColorAction(data));
     })
     .catch(error => {
       console.log(error);
@@ -35,17 +38,28 @@ const ColorSetting = () => {
   };
 
   useEffect(() => {
+    if (user==null || user==undefined || user=='') {
+      localStorage.setItem('user', '');
+      history.push('/signin');
+    }
+    
     fetchData();
   },[]);
 
   const save = async () => {
-    await axios.put(baseUrl+'/1', {...colors})
+    await axios.put(baseUrl+'/color', {...colors, user_id: user})
     .then(res => {
       console.log(res.data);  
     })
     .catch(error => {
       console.log(error);
     });
+  }
+
+  const signout = () => {
+    localStorage.setItem('user', '');
+    // dispatch(signinAcition(''));
+    window.location.replace('/signin');
   }
 
   return (
@@ -101,6 +115,15 @@ const ColorSetting = () => {
           <button
             onClick={save}
           >Save</button> 
+        </FlexContainer>
+      </StyledDiv>
+      <StyledDiv
+        height="fit-content"
+      >
+        <FlexContainer>
+          <button
+            onClick={signout}
+          >Signout</button> 
         </FlexContainer>
       </StyledDiv>
     </FlexContainer>

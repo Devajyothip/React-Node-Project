@@ -21,7 +21,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to first node application." });
 });
 
-require("./routes")(app);
+// require("./routes")(app);
+app.use('/api/color', require('./routes/color'));
+app.use('/api/user', require('./routes/user'));
+  
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

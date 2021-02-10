@@ -3,7 +3,7 @@ module.exports = mongoose => {
     "color",
     mongoose.Schema(
       {
-        _id:{ type: Number, default: 0 },
+        user_id: String,
         wall_main: String,
         wall_bar: String,
         curtain_primary: String,

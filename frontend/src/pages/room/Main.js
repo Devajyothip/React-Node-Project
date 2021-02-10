@@ -1,12 +1,12 @@
 import React from 'react';
-import Wall from '../components/wall';
-import Curtain from '../components/curtain';
-import Floor from '../components/floor';
-import Sofa from '../components/sofa';
+import Wall from '../../components/wall';
+import Curtain from '../../components/curtain';
+import Floor from '../../components/floor';
+import Sofa from '../../components/sofa';
 
 import {
   RelativeContainer,
-} from '../styled';
+} from '../../styled';
 
 const Main = () => {
   return (

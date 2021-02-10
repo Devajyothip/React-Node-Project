@@ -1,12 +1,14 @@
 import React from 'react';
+
 import Main from './Main';
 import ColorSetting from './ColorSetting';
 
 import {
   RelativeContainer,
-} from '../styled';
+} from '../../styled';
 
 const Room = () => {
+
   return (
     <React.Fragment>
       <RelativeContainer
